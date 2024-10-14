@@ -20,3 +20,7 @@
 2. Run yarn install
 3. Run yarn start to launch the application in developer mode
 4. Run yarn make and or package to build app for distobution
+
+<div align="center">
+    <img src="./preview.png" alt="Clipboard Manager App" width="300"/>
+</div>
