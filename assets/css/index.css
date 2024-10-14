@@ -23,15 +23,16 @@ li {
     line-break: anywhere;
     white-space: pre-wrap;
     border: silver solid 1px;  
-    transition: max-height 0.3s ease, opacity 0.5s ease-in-out; /* Use max-height for animation */
+    transition: max-height 0.3s ease, opacity 0.5s ease-in-out;
     color: black;
     height: 78px;
     overflow: hidden;
+    border-radius: 8px;
 }
 
 li.expanded {
     height: 80%;
-    overflow: auto; /* Allow overflow when expanded */
+    overflow: auto;
 }
 
 li span {
@@ -55,12 +56,11 @@ li:active {
 
 #clipboard-list li {
     display: flex;
-    justify-content: space-between;  /* Distributes space between text and image */
-    align-items: center;             /* Centers text and image vertically */
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
     margin: 8px;
 }
-
 
 #status-bar {
     background-color: transparent;
@@ -78,31 +78,32 @@ li:active {
 }
 
 #status {
-    opacity: 0;                /* Start hidden */
-    transition: opacity 0.5s; /* Smooth transition for opacity */
+    opacity: 0;
+    transition: opacity 0.5s;
     color: black;
 }
 
 .fade-in {
-    opacity: 1 !important;               /* Make visible */
+    opacity: 1 !important;
 }
 
 .fade-out {
-    opacity: 0;               /* Fade out */
+    opacity: 0;
 }
 
 .image-group {
-        display: flex;
-        align-items: center;
-        position: relative;
-        justify-content: end;
-        flex-direction: row;
-        height: 100%;
-        width: 100px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: end;
+    flex-direction: row;
+    height: 100%;
+    width: 100px;
 }
 
 .image-group img {
     height: 30px;
     padding: 8px;
+    cursor: pointer;
 }
 
