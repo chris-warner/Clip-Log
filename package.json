@@ -1,0 +1,17 @@
+{
+  "name": "clip-log",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "Chris Warner",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "electron": "^32.2.0"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron-clipboard-watcher": "^1.0.1"
+  }
+}

@@ -1,0 +1,108 @@
+body {
+    font-family: PT Mono, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: white;
+    overflow: hidden;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+li {
+    padding: 10px;
+    margin: 5px 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    line-break: anywhere;
+    white-space: pre-wrap;
+    border: silver solid 1px;  
+    transition: max-height 0.3s ease, opacity 0.5s ease-in-out; /* Use max-height for animation */
+    color: black;
+    height: 78px;
+    overflow: hidden;
+}
+
+li.expanded {
+    height: 80%;
+    overflow: auto; /* Allow overflow when expanded */
+}
+
+li span {
+    margin: auto;
+}
+
+li.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+li:hover {
+    border: grey solid 1px;  
+    transition: all 0.2s ease-in-out;
+}
+
+li:active {
+    border: black solid 1px;  
+    transition: all 0.1s ease-in-out;
+}
+
+#clipboard-list li {
+    display: flex;
+    justify-content: space-between;  /* Distributes space between text and image */
+    align-items: center;             /* Centers text and image vertically */
+    padding: 10px;
+    margin: 8px;
+}
+
+
+#status-bar {
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    border-top: silver solid 0;  
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#status {
+    opacity: 0;                /* Start hidden */
+    transition: opacity 0.5s; /* Smooth transition for opacity */
+    color: black;
+}
+
+.fade-in {
+    opacity: 1 !important;               /* Make visible */
+}
+
+.fade-out {
+    opacity: 0;               /* Fade out */
+}
+
+.image-group {
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: end;
+        flex-direction: row;
+        height: 100%;
+        width: 100px;
+}
+
+.image-group img {
+    height: 30px;
+    padding: 8px;
+}
+
