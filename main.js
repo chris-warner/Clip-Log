@@ -30,22 +30,17 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 });
 
-// Start clipboard watcher
 clipboardWatcher({
     watchDelay: 1000,
 
     // When an image is copied
     // onImageChange: function (nativeImage) {
     //     const imageDataUrl = nativeImage.toDataURL();  // Convert to data URL
-
     //     // Add image to the list in the renderer process
     //     win.webContents.executeJavaScript(`window.addImageItem("${imageDataUrl.replace(/"/g, '\\"')}")`);
     // },
 
-    // When text is copied
     onTextChange: function (text) {
-
-        // Add text to the list in the renderer process
         win.webContents.send('clipboard-text', text);
     }
 });
