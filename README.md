@@ -14,3 +14,9 @@
 - **Electron**: For building cross-platform desktop applications using web technologies (HTML, CSS, JavaScript).
 - **JavaScript (ES6)**: For app logic and functionality.
 - **CSS**: For styling and layout.
+
+## Installation:
+1. Clone the repository
+2. Run yarn install
+3. Run yarn start to launch the application in developer mode
+4. Run yarn make and or package to build app for distobution
