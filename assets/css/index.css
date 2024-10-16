@@ -31,7 +31,9 @@ li {
 }
 
 li.expanded {
-    height: 80%;
+    height: 50vh;
+    padding-bottom: 100px;
+    margin-bottom: 100px;
     overflow: auto;
 }
 
