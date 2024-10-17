@@ -1,17 +1,30 @@
 const { ipcRenderer } = require('electron');
+const he = require('he');
 
 window.addEventListener('DOMContentLoaded', () => {
     const clipboardList = document.getElementById('clipboard-list');
     const addedTexts = new Set(); // Track added texts to avoid duplicates
     const status = document.getElementById('status');
+    const decoderCheckbox = document.getElementById('decoder'); // Checkbox element
 
-    function addTextItem(text) {
-        if (addedTexts.has(text)) return;
+    // Array to store both encoded and decoded texts for each item
+    const textItems = [];
 
+    function addTextItem(text, decodedText) {
+        // Add both the original and decoded text to the array
+        textItems.push({ text, decodedText });
+
+        // Create and append only the new item without re-rendering the list
+        appendNewItem(text, decodedText);
+    }
+
+    function appendNewItem(text, decodedText) {
         const li = document.createElement('li');
         li.classList.add('collapsed');
         const textSpan = document.createElement('span');
-        textSpan.textContent = text;
+
+        // Display either decoded or encoded text based on checkbox state
+        textSpan.textContent = decoderCheckbox.checked ? decodedText : text;
 
         // Div to group the icons
         const imageGroup = document.createElement('div');
@@ -34,10 +47,9 @@ window.addEventListener('DOMContentLoaded', () => {
         li.appendChild(textSpan);
         li.appendChild(imageGroup);
         clipboardList.prepend(li);
-        addedTexts.add(text);
 
         copyImg.addEventListener('click', () => {
-            copyToClipboard(text);
+            copyToClipboard(textSpan.textContent); // Copy whatever is displayed
             showStatusMessage("Copied!");
         });
 
@@ -81,8 +93,25 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 
+    function updateExistingItems() {
+        // Iterate through all list items and update their content based on the checkbox
+        const listItems = clipboardList.getElementsByTagName('li');
+        textItems.forEach((item, index) => {
+            const textSpan = listItems[index].querySelector('span');
+            textSpan.textContent = decoderCheckbox.checked ? item.decodedText : item.text;
+        });
+    }
+
+    // Listener for the "Decode" checkbox toggle
+    decoderCheckbox.addEventListener('change', () => {
+        updateExistingItems(); // Update only the content of existing items
+    });
+
     ipcRenderer.on('clipboard-text', (event, text) => {
         console.log("Received clipboard text:", text);
-        addTextItem(text);
+        let decodedText = he.decode(text);
+
+        // Add both the encoded and decoded text to the list
+        addTextItem(text, decodedText);
     });
 });

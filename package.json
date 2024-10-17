@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "electron-clipboard-watcher": "^1.0.1",
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "he": "^1.2.0"
   }
 }

@@ -128,3 +128,13 @@ header {
     flex-direction: column;
     align-items: center;
 }
+
+.decoder-div {
+   display: flex;
+   flex-direction: row;
+   justify-content: end;
+}
+
+.decoder-div p {
+    color: black;
+}
